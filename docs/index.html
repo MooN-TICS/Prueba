@@ -1,102 +1,327 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="es">
 <head>
-<title>La Inteligencia Artesanal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Inteligencia Artesanal</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --bg-strong: #eaf1ff;
+      --panel: rgba(255, 255, 255, 0.82);
+      --panel-strong: #ffffff;
+      --primary: #2f5cff;
+      --primary-dark: #1f3fb8;
+      --accent: #7c4dff;
+      --text: #1f2a37;
+      --muted: #5d6b82;
+      --border: rgba(47, 92, 255, 0.12);
+      --shadow: 0 18px 45px rgba(31, 58, 123, 0.12);
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 77, 255, 0.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(47, 92, 255, 0.12), transparent 28%),
+        linear-gradient(180deg, var(--bg-strong), var(--bg));
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page-shell {
+      max-width: 1100px;
+      margin: 34px auto;
+      padding: 0 18px 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      align-items: center;
+      gap: 26px;
+      background: linear-gradient(135deg, #0e1c47, #2f5cff 58%, #7c4dff);
+      color: #fff;
+      padding: 38px 36px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .author {
+      margin-top: 18px;
+      font-size: 1.08rem;
+      opacity: 0.95;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 510px;
+      justify-self: end;
+      border-radius: 20px;
+      border: 4px solid rgba(255,255,255,0.25);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 1;
+    }
+
+    main {
+      margin-top: 28px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .panel h2, .panel h3 {
+      margin-top: 0;
+      color: var(--primary-dark);
+    }
+
+    .panel h2 {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      margin-bottom: 12px;
+    }
+
+    .panel p {
+      margin: 0 0 14px;
+      font-size: 1.02rem;
+    }
+
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background: var(--panel-strong);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid rgba(31, 58, 123, 0.12);
+      padding: 14px 16px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: linear-gradient(135deg, #edf3ff, #dfeaff);
+      color: var(--primary-dark);
+      font-size: 1.05rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .video-wrap {
+      display: flex;
+      justify-content: center;
+      padding-top: 8px;
+    }
+
+    iframe {
+      width: min(100%, 760px);
+      height: 420px;
+      border: 0;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(17, 24, 39, 0.2);
+    }
+
+    .references {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .references li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(31, 58, 123, 0.09);
+    }
+
+    .references li:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 820px) {
+      .hero,
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 26px 22px;
+      }
+
+      .hero img {
+        justify-self: center;
+      }
+
+      iframe {
+        height: 260px;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Inteligencia Artificial</h1>
-<p><strong>Eduardo Luna Garabita</strong></p>
-<img src="https://unamglobal.unam.mx/wp-content/uploads/2018/09/inteligencia-artificial.jpg" alt="Imagen de la ia xddddd" width="540" height="337">
-<br>
-<h3>Antecedentes de la IA</h3>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Tecnología · Sociedad · Ética</p>
+        <h1>Inteligencia Artificial</h1>
+        <p class="author"><strong>Eduardo Luna Garabita</strong></p>
+      </div>
+      <img src="https://unamglobal.unam.mx/wp-content/uploads/2018/09/inteligencia-artificial.jpg" alt="Imagen de la inteligencia artificial" width="540" height="337" />
+    </header>
 
-<div>
-<p>
-La idea de crear máquinas capaces de pensar o realizar tareas humanas existe desde hace mucho tiempo. Sin embargo, la Inteligencia Artificial comenzó a desarrollarse como un campo formal durante el siglo XX.
+    <main>
+      <section class="panel">
+        <h2>Antecedentes de la IA</h2>
+        <p>La idea de crear máquinas capaces de pensar o realizar tareas humanas existe desde hace mucho tiempo. Sin embargo, la Inteligencia Artificial comenzó a desarrollarse como campo formal durante el siglo XX.</p>
+        <p>En 1950, Alan Turing planteó la pregunta de si las máquinas podían pensar y propuso una prueba para evaluar su comportamiento inteligente. Después, en 1956, durante una reunión en Dartmouth, se consolidó el estudio de la IA como disciplina.</p>
+        <p>Durante las primeras décadas, la investigación se enfocó principalmente en desarrollar programas capaces de resolver problemas matemáticos, jugar juegos, usar reglas lógicas y representar el conocimiento.</p>
+        <p>Posteriormente, el desarrollo de computadoras más potentes, el acceso a grandes cantidades de información y los avances en aprendizaje automático y profundo impulsaron un crecimiento acelerado del campo.</p>
+      </section>
 
-En 1950, Alan Turing planteó la pregunta de si las máquinas podían pensar y propuso una prueba para evaluar su comportamiento inteligente. Después, en 1956, durante una reunión en Dartmouth, se utilizó oficialmente el término “Inteligencia Artificial”, por lo que este año se considera uno de los momentos más importantes en el inicio de la IA como área de estudio.</p></div>
-<div><p>Durante las primeras décadas, la investigación se enfocó principalmente en desarrollar programas capaces de resolver problemas matemáticos, jugar juegos, utilizar reglas lógicas y representar conocimientos. Sin embargo, los avances fueron más lentos de lo esperado debido a las limitaciones de las computadoras, la poca disponibilidad de datos y la dificultad para reproducir mediante reglas computacionales procesos complejos de la inteligencia humana.
+      <section class="two-columns">
+        <div class="panel">
+          <h2>Ventajas y desventajas de la IA</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Ventajas</th>
+                <th>Desventajas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ul>
+                    <li>Automatización de procesos.</li>
+                    <li>Reduce el error humano.</li>
+                    <li>Potencia la creatividad.</li>
+                    <li>Aporta precisión.</li>
+                    <li>Agiliza la toma de decisiones.</li>
+                    <li>Mejora avances en la salud.</li>
+                    <li>Ayuda a detectar errores de seguridad.</li>
+                    <li>Permite personalizar ofertas comerciales.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Vulneración de derechos.</li>
+                    <li>Dificultad de acceso a datos.</li>
+                    <li>Falta de profesionales cualificados.</li>
+                    <li>Alto costo de desarrollo.</li>
+                    <li>Pérdida de empleos.</li>
+                    <li>Dependencia de la tecnología.</li>
+                    <li>Falta de empatía y ética.</li>
+                    <li>Uso malicioso de sistemas inteligentes.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-Posteriormente, el desarrollo de computadoras más potentes, el acceso a grandes cantidades de información y los avances en aprendizaje automático (machine learning) y aprendizaje profundo (deep learning) permitieron que la IA evolucionara considerablemente. En años recientes, la aparición de sistemas de IA generativa, capaces de producir texto, imágenes, audio, video y código, ha incrementado notablemente su presencia en la educación, empresas, investigación, entretenimiento y actividades cotidianas.</p>
-</div> 
-<img src="https://thecloud.group/wp-content/uploads/2021/01/inteligenciaArtificial.jpg" alt="computadoras" width="450" height="300">
-<br><br><br>
-<div><table border="1">
-    <caption><strong> Ventajas y desventajas de la IA</strong></caption>
-   <tr> <th>Ventajas</th><th>Desventajas</th></tr>
-   <tr>
-    <td> 
-        <ul>
+        <div class="panel">
+          <h2>Complicaciones de haberla creado</h2>
+          <p>El desarrollo de la IA ha presentado diversos retos desde sus primeros años. Uno de los principales ha sido lograr que las máquinas puedan procesar situaciones complejas de manera similar a los seres humanos.</p>
+          <p>Otro problema importante es la calidad de los datos utilizados para entrenar los sistemas. Si la información es incompleta, sesgada o poco confiable, los resultados también lo serán.</p>
+          <p>También existe el problema de la falta de transparencia. Algunos sistemas pueden producir decisiones sin que sea sencillo comprender su razonamiento.</p>
+          <p>La privacidad y protección de datos es otro desafío importante, especialmente cuando se usan grandes cantidades de información personal para entrenar modelos.</p>
+          <p>Finalmente, surge la necesidad de establecer responsabilidad y regulación para determinar quién responde por los efectos de una IA incorrecta o dañina.</p>
+        </div>
+      </section>
 
-      <li>  Automatización de procesos</li> 
- <li>Reduce el error humano</li> 
- <li>Potencia la creatividad</li> 
-  <li>Aporta precisión</li> 
- <li>Agiliza la toma de decisiones</li> 
- <li>Los avances en el sector de la salud</li> 
- <li>El análisis de los errores de seguridad</li> 
- <li>Personalización de tu oferta comercial</li> 
-</ul></td>
+      <section class="panel">
+        <h2>Afectaciones que está causando la Inteligencia Artificial</h2>
+        <p>Uno de los temas más discutidos es el impacto de la IA sobre los empleos. La automatización puede disminuir la cantidad de tareas realizadas manualmente y cambiar la forma en que algunas profesiones se desarrollan.</p>
+        <p>Sin embargo, esto no significa necesariamente que la IA vaya a eliminar todos los empleos. En muchos casos, cambia la naturaleza del trabajo y exige nuevas competencias.</p>
+        <p>La IA generativa permite producir textos, imágenes, audios y videos muy realistas. Esto facilita la creación de información falsa o contenido manipulado, incluido el uso de deepfakes.</p>
+        <p>También existe un riesgo ligado a la privacidad, ya que el tratamiento de datos personales puede generar dudas sobre su recolección, almacenamiento y uso.</p>
+        <p>Además, la IA está modificando la forma en que los estudiantes investigan, redactan trabajos y estudian, lo que puede ayudar, pero también requiere una reflexión crítica sobre su uso responsable.</p>
+      </section>
 
-<td> 
-    <ul>
- <li> La vulneración de derechos</li>
- <li>La dificultad de acceso a los datos</li>
- <li>La falta de profesionales cualificados</li>
- <li>El coste de su desarrollo</li>
- <li>Pérdida de empleos</li>
- <li>La dependencia de la tecnología</li>
- <li> Falta de empatía y de ética</li>
- <li>La posibilidad de su uso con fines maliciosos</li>
-</ul></td></tr>
+      <section class="panel">
+        <h3>Imagen complementaria</h3>
+        <img src="https://thecloud.group/wp-content/uploads/2021/01/inteligenciaArtificial.jpg" alt="Computadoras y tecnología" width="450" height="300" style="max-width:100%; border-radius: 18px; display:block; margin: 0 auto;" />
+      </section>
 
-</table></div>
-<br>
-<br>
-<h3>Complicaciones de haberla creado</h3>
-<p>El desarrollo de la IA ha presentado diversos retos desde sus primeros años. Uno de los principales ha sido lograr que las máquinas puedan procesar situaciones complejas de manera similar a los seres humanos. La inteligencia humana depende de factores como el contexto, la experiencia, el lenguaje, las emociones y el conocimiento previo, elementos que resultan difíciles de representar completamente mediante algoritmos.</p>
+      <section class="panel">
+        <h2>Video relacionado</h2>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/QGdEfeektgw?si=VIKeKGDGFvdBg1MB" title="Video sobre inteligencia artificial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </section>
 
-<p2>Otro problema importante es la calidad de los datos utilizados para entrenar los sistemas. Los sistemas de IA aprenden a partir de grandes cantidades de información, por lo que si los datos contienen errores, prejuicios o representaciones desiguales de determinados grupos, el sistema puede reproducir o incluso amplificar esos problemas. UNESCO identifica precisamente los sesgos, la discriminación, la privacidad y la falta de transparencia entre las principales preocupaciones éticas relacionadas con la IA.
-
-También existe el problema de la falta de transparencia. Algunos sistemas de IA pueden producir resultados sin que sea sencillo comprender exactamente por qué llegaron a determinada conclusión. Esto resulta especialmente importante cuando la tecnología se utiliza en ámbitos como contratación laboral, servicios financieros, educación, salud o administración pública.</p2>
-<br><br>
-<p3>La privacidad y protección de datos constituye otro desafío. Los sistemas de IA pueden utilizar grandes cantidades de información para su entrenamiento y funcionamiento. El Instituto Nacional de Estándares y Tecnología de Estados Unidos (NIST) señala que los sistemas de IA generativa pueden presentar riesgos relacionados con la privacidad, incluyendo el uso de información personal en los datos empleados para entrenar modelos.
-
-Finalmente, existe el reto de establecer responsabilidad y regulación. Conforme la IA se utiliza en más actividades, surge la necesidad de determinar quién debe responder cuando un sistema produce un resultado incorrecto o genera algún daño. Por esta razón, organismos como UNESCO y NIST han desarrollado principios y marcos orientados a promover una IA segura, transparente, responsable y respetuosa de los derechos humanos.</p3>
-</div>
-
-<h3>Afectaciones que está causando la Inteligencia Artificial</h3>
-
-<p>Uno de los temas más discutidos es el impacto de la IA sobre los empleos. La automatización puede disminuir la cantidad de tareas que necesitan realizarse manualmente y modificar las funciones de determinados puestos.
-
-Sin embargo, esto no significa necesariamente que la IA vaya a eliminar todos los empleos. Un estudio de la Organización Internacional del Trabajo (OIT) concluyó que la IA generativa tiene mayor potencial para complementar y transformar los trabajos que para sustituirlos completamente, debido a que normalmente automatiza determinadas tareas y no ocupaciones completas.</p>
-<br>
-<br>
-<p2>La IA generativa permite producir textos, imágenes, audios y videos muy realistas. Esto facilita la creación de información falsa o contenido manipulado, incluyendo los llamados deepfakes.
-
-El problema consiste en que cada vez puede resultar más difícil para una persona distinguir entre contenido auténtico y contenido generado artificialmente. UNESCO señala entre las preocupaciones relacionadas con la IA la desinformación, la información errónea, la discriminación y los problemas relacionados con la comunicación y el acceso a la información.</p2>
-<br><br>
-<p3>El desarrollo de sistemas de IA requiere grandes cantidades de información. Cuando esos datos incluyen información personal, pueden surgir riesgos relacionados con su recopilación, almacenamiento, utilización y exposición.
-
-Por esta razón, la protección de datos personales es uno de los principios centrales de los marcos éticos internacionales relacionados con la IA. UNESCO establece la privacidad y la protección de datos como uno de sus principios fundamentales.</p3>
-<br><br>
-<p4>La IA también está modificando la manera en que los estudiantes realizan investigaciones, redactan trabajos y estudian. Puede ser una herramienta útil para explicar conceptos, generar ejemplos y apoyar el aprendizaje, pero su uso excesivo puede provocar dependencia y reducir el desarrollo de habilidades como la investigación, escritura, análisis y pensamiento crítico.</p4>
-<br>
-    <br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QGdEfeektgw?si=VIKeKGDGFvdBg1MB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<br>
-<h3>Referencias</h3>
-<ul>
-<li><p>Mucci, T. (2025, febrero 28). La historia de la inteligencia artificial. Ibm.com. <a href="https://www.ibm.com/mx-es/think/topics/history-of-artificial-intelligence"></a>
-
-</p></li>
-<li>UNESCO. (2022). Recommendation on the ethics of artificial intelligence. UNESCO.<a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics?"></a></li>
-<li>Caballar, R. D. (2025, diciembre 29). 10 peligros y riesgos de la IA y cómo gestionarlos. Ibm.com. <a href="https://www.ibm.com/mx-es/think/insights/10-ai-dangers-and-risks-and-how-to-manage-them"></a>
-
-</li>
-
-</ul>
+      <section class="panel">
+        <h2>Referencias</h2>
+        <ul class="references">
+          <li>Mucci, T. (2025, febrero 28). <a href="https://www.ibm.com/mx-es/think/topics/history-of-artificial-intelligence" target="_blank" rel="noopener noreferrer">La historia de la inteligencia artificial.</a> IBM.</li>
+          <li>UNESCO. (2022). <a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics" target="_blank" rel="noopener noreferrer">Recommendation on the ethics of artificial intelligence.</a> UNESCO.</li>
+          <li>Caballar, R. D. (2025, diciembre 29). <a href="https://www.ibm.com/mx-es/think/insights/10-ai-dangers-and-risks-and-how-to-manage-them" target="_blank" rel="noopener noreferrer">10 peligros y riesgos de la IA y cómo gestionarlos.</a> IBM.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
